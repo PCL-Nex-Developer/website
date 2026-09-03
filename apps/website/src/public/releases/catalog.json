@@ -1,0 +1,147 @@
+{
+	"updated_at": "2026-08-30T00:00:00+08:00",
+	"announcements": [
+		{
+			"id": "pcl-nex-2026.08.4",
+			"version": "2026.08.4",
+			"publishedAt": "2026-08-26",
+			"title": {
+				"en-US": "PCL Nex 2026.08.4",
+				"zh-CN": "PCL Nex 2026.08.4"
+			},
+			"changes": {
+				"added": [
+					{
+						"en-US": "Added cross-platform packages and a coordinated release pipeline for macOS and Linux testing builds.",
+						"zh-CN": "新增 macOS 与 Linux 内测构建的跨平台软件包及统一发布流程。"
+					},
+					{
+						"en-US": "Added operating-system and architecture-aware plugin package selection.",
+						"zh-CN": "插件包现可根据操作系统与处理器架构自动选择。"
+					}
+				],
+				"changed": [
+					{
+						"en-US": "Plugin downloads now use a complete prebuilt index to reduce GitHub requests.",
+						"zh-CN": "插件下载改用完整预索引，减少对 GitHub 的请求。"
+					},
+					{
+						"en-US": "Platform data directories, runtime paths, and update handling were unified.",
+						"zh-CN": "统一各平台的数据目录、运行路径与更新处理逻辑。"
+					}
+				],
+				"fixed": [
+					{
+						"en-US": "Fixed startup and runtime issues affecting macOS and Linux builds.",
+						"zh-CN": "修复 macOS 与 Linux 构建的启动和运行问题。"
+					},
+					{
+						"en-US": "Fixed missing AppImage icons and improved cross-platform build reliability.",
+						"zh-CN": "修复 AppImage 图标缺失，并提升跨平台构建可靠性。"
+					},
+					{
+						"en-US": "Fixed tooltip visibility, Cleanroom content selection, and platform path handling.",
+						"zh-CN": "修复提示框显示、Cleanroom 内容选择及跨平台路径处理问题。"
+					}
+				]
+			},
+			"externalUrl": "https://github.com/PCL-Nex-Developer/PCL2-Nex/releases/tag/v2026.08.4"
+		},
+		{
+			"id": "pcl-nex-2026.08.3",
+			"version": "2026.08.3",
+			"publishedAt": "2026-08-12",
+			"title": {
+				"en-US": "PCL Nex 2026.08.3",
+				"zh-CN": "PCL Nex 2026.08.3"
+			},
+			"changes": {
+				"changed": [
+					{
+						"en-US": "The plugin marketplace now prioritizes the official prebuilt index and no longer keeps a repository disk cache.",
+						"zh-CN": "插件市场现优先使用官方预索引，并移除仓库磁盘缓存。"
+					}
+				],
+				"fixed": [
+					{
+						"en-US": "Unavailable Java installations are removed from the list after a refresh.",
+						"zh-CN": "刷新 Java 列表后会自动移除已经失效的安装项。"
+					}
+				]
+			},
+			"externalUrl": "https://github.com/PCL-Nex-Developer/PCL2-Nex/releases/tag/v2026.08.3"
+		},
+		{
+			"id": "pcl-nex-2026.08.2",
+			"version": "2026.08.2",
+			"publishedAt": "2026-08-12",
+			"title": {
+				"en-US": "PCL Nex 2026.08.2",
+				"zh-CN": "PCL Nex 2026.08.2"
+			},
+			"changes": {
+				"changed": [
+					{
+						"en-US": "Plugin marketplace loading was rebuilt around the official index.",
+						"zh-CN": "插件市场加载流程围绕官方索引进行了重构。"
+					}
+				],
+				"fixed": [
+					{
+						"en-US": "Launcher restart now waits for the previous process lock to be released.",
+						"zh-CN": "启动器重启时会等待旧进程释放文件锁。"
+					},
+					{
+						"en-US": "Fixed stale Java installations remaining visible after refresh.",
+						"zh-CN": "修复刷新后仍显示失效 Java 安装项的问题。"
+					}
+				]
+			},
+			"externalUrl": "https://github.com/PCL-Nex-Developer/PCL2-Nex/releases/tag/v2026.08.2"
+		},
+		{
+			"id": "pcl-nex-2026.08.1",
+			"version": "2026.08.1",
+			"publishedAt": "2026-08-01",
+			"title": {
+				"en-US": "PCL Nex 2026.08.1",
+				"zh-CN": "PCL Nex 2026.08.1"
+			},
+			"changes": {
+				"added": [
+					{
+						"en-US": "Added automatic Jar-in-Jar mod parsing and more complete crash-report exports.",
+						"zh-CN": "新增内嵌模组（Jar-in-Jar）自动解析与更完整的崩溃报告导出。"
+					},
+					{
+						"en-US": "Instance exports can now include folders not covered by existing rules.",
+						"zh-CN": "实例导出现在可以包含未被既有规则覆盖的文件夹。"
+					}
+				],
+				"changed": [
+					{
+						"en-US": "The launcher runtime and dependencies were updated to .NET 10.",
+						"zh-CN": "启动器运行时与依赖已升级至 .NET 10。"
+					},
+					{
+						"en-US": "Memory and download-speed units now use IEC notation.",
+						"zh-CN": "内存与下载速度单位改用 IEC 标准。"
+					}
+				],
+				"removed": [
+					{
+						"en-US": "Removed Quilt loader support.",
+						"zh-CN": "移除 Quilt 加载器支持。"
+					}
+				],
+				"fixed": [
+					{
+						"en-US": "Fixed multiple download, login, cache, tooltip, and crash-report reliability issues synchronized from upstream.",
+						"zh-CN": "同步修复多项下载、登录、缓存、提示框及崩溃报告可靠性问题。"
+					}
+				]
+			},
+			"externalUrl": "https://github.com/PCL-Nex-Developer/PCL2-Nex/releases/tag/v2026.08.1"
+		}
+	]
+}

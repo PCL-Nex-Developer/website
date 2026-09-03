@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pcl-nex-developer.github.io/PCL2-Nex/sitemap.xml

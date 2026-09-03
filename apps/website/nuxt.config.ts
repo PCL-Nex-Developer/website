@@ -1,0 +1,95 @@
+import svgLoader from 'vite-svg-loader'
+
+const SITE_URL =
+	process.env.NUXT_PUBLIC_SITE_URL ||
+	'https://pcl-nex-developer.github.io/PCL2-Nex'
+const RELEASE_MANIFEST_URL =
+	process.env.NUXT_PUBLIC_RELEASE_MANIFEST_URL ||
+	'https://raw.githubusercontent.com/PCL-Nex-Developer/Nex_Server/refs/heads/main/apiv2/releases.json'
+
+export default defineNuxtConfig({
+	ssr: true,
+	srcDir: 'src/',
+	app: {
+		head: {
+			htmlAttrs: {
+				class: 'accent-pcl dark-mode',
+				lang: 'zh-CN',
+			},
+			title: 'PCL Nex - 免费开源的 Minecraft 启动器',
+			// 在 body 渲染前同步应用已保存的主题偏好，避免浅色用户首屏闪深色
+			script: [
+				{
+					key: 'theme-init',
+					innerHTML: `(function(){try{var t=localStorage.getItem('pcl-nex-theme');var r=t;if(!r||r==='system'){r=(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark'}var d=document.documentElement;d.classList.remove('light-mode','dark-mode','oled-mode');d.classList.add(r==='light'?'light-mode':r==='oled'?'oled-mode':'dark-mode');d.style.colorScheme=r==='light'?'light':'dark'}catch(e){}})()`,
+				},
+			],
+			link: [
+				{ rel: 'icon', type: 'image/png', href: '/pcl-nex.png' },
+				{ rel: 'apple-touch-icon', type: 'image/png', href: '/pcl-nex.png' },
+			],
+		},
+	},
+	runtimeConfig: {
+		public: {
+			siteUrl: SITE_URL,
+			releaseManifestUrl: RELEASE_MANIFEST_URL,
+		},
+	},
+	vite: {
+		css: {
+			preprocessorOptions: {
+				scss: {
+					silenceDeprecations: ['import'],
+				},
+			},
+		},
+		resolve: {
+			dedupe: ['vue'],
+		},
+		plugins: [
+			svgLoader({
+				svgoConfig: {
+					plugins: [
+						{
+							name: 'preset-default',
+							params: {
+								overrides: {
+									removeViewBox: false,
+									cleanupIds: { minify: false },
+								},
+							},
+						},
+					],
+				},
+			}),
+		],
+	},
+	css: ['~/assets/styles/tailwind.css'],
+	postcss: {
+		plugins: {
+			tailwindcss: {},
+			autoprefixer: {},
+		},
+	},
+	nitro: {
+		preset: 'static',
+		prerender: {
+			crawlLinks: false,
+			routes: ['/', '/changelog', '/terms', '/privacy'],
+		},
+	},
+	routeRules: {
+		'/': { static: true },
+		'/changelog': { static: true },
+		'/terms': { static: true },
+		'/privacy': { static: true },
+	},
+	typescript: {
+		shim: false,
+		strict: true,
+		typeCheck: false,
+	},
+	compatibilityDate: '2025-01-01',
+	telemetry: false,
+})

@@ -1,0 +1,167 @@
+<script setup lang="ts">
+import { defineMessages, useVIntl } from '@modrinth/ui/src/composables/i18n.ts'
+
+const { formatMessage } = useVIntl()
+
+const messages = defineMessages({
+	features: {
+		id: 'pcl-nex-site.navigation.features',
+		defaultMessage: 'Features',
+	},
+	faq: { id: 'pcl-nex-site.navigation.faq', defaultMessage: 'FAQ' },
+	downloads: {
+		id: 'pcl-nex-site.footer.downloads',
+		defaultMessage: 'Downloads',
+	},
+	changelog: {
+		id: 'pcl-nex-site.footer.release-history',
+		defaultMessage: 'Changelog',
+	},
+	terms: {
+		id: 'pcl-nex-site.navigation.terms',
+		defaultMessage: 'Terms of Service',
+	},
+	privacy: {
+		id: 'pcl-nex-site.navigation.privacy',
+		defaultMessage: 'Privacy Policy',
+	},
+	developer: {
+		id: 'pcl-nex-site.footer.developer',
+		defaultMessage: 'PCL Nex Developer Team',
+	},
+	openSourcePrefix: {
+		id: 'pcl-nex-site.footer.open-source-prefix',
+		defaultMessage: 'PCL Nex is',
+	},
+	openSourceLink: {
+		id: 'pcl-nex-site.footer.open-source-link',
+		defaultMessage: 'open source',
+	},
+	disclaimer: {
+		id: 'pcl-nex-site.footer.minecraft-disclaimer',
+		defaultMessage:
+			'NOT AN OFFICIAL MINECRAFT SERVICE. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.',
+	},
+})
+</script>
+
+<template>
+	<footer
+		class="site-footer relative border-t border-divider bg-surface-1 text-[var(--color-base)]"
+	>
+		<div class="footer-inner">
+			<div
+				class="footer-legal flex flex-wrap gap-x-[1.4rem] gap-y-[0.4rem] text-[0.78rem] text-[var(--color-secondary)]"
+			>
+				<p>
+					© {{ new Date().getFullYear() }}
+					{{ formatMessage(messages.developer) }}
+				</p>
+				<p class="open-source">
+					{{ formatMessage(messages.openSourcePrefix) }}
+					<a
+						href="https://github.com/PCL-Nex-Developer/PCL2-Nex"
+						target="_blank"
+						rel="noopener"
+					>
+						{{ formatMessage(messages.openSourceLink) }} </a
+					>.
+				</p>
+			</div>
+
+			<nav
+				class="footer-links flex flex-wrap justify-end gap-x-[1.3rem] gap-y-[0.35rem]"
+				aria-label="Footer"
+			>
+				<NuxtLink to="/#features">{{
+					formatMessage(messages.features)
+				}}</NuxtLink>
+				<NuxtLink to="/#faq">{{ formatMessage(messages.faq) }}</NuxtLink>
+				<a href="#download">{{ formatMessage(messages.downloads) }}</a>
+				<NuxtLink to="/changelog">{{
+					formatMessage(messages.changelog)
+				}}</NuxtLink>
+				<NuxtLink to="/terms">{{ formatMessage(messages.terms) }}</NuxtLink>
+				<NuxtLink to="/privacy">{{ formatMessage(messages.privacy) }}</NuxtLink>
+			</nav>
+
+			<p
+				class="col-span-full m-0 text-center text-[0.64rem] tracking-[0.015em] text-[var(--color-secondary)] opacity-45"
+			>
+				{{ formatMessage(messages.disclaimer) }}
+			</p>
+		</div>
+	</footer>
+</template>
+
+<style scoped lang="scss">
+.site-footer {
+	&::before {
+		position: absolute;
+		top: -1px;
+		left: 50%;
+		width: min(76rem, calc(100% - 3rem));
+		height: 1px;
+		transform: translateX(-50%);
+		background: linear-gradient(
+			90deg,
+			transparent,
+			var(--color-brand),
+			transparent
+		);
+		content: '';
+		opacity: 0.6;
+	}
+}
+
+.footer-inner {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	align-items: center;
+	gap: 0.8rem 2.5rem;
+	width: min(76rem, calc(100% - 3rem));
+	margin: 0 auto;
+	padding: 1.75rem 0;
+}
+
+.footer-legal {
+	p {
+		margin: 0;
+	}
+
+	a {
+		color: var(--color-base);
+		text-underline-offset: 0.15rem;
+	}
+}
+
+.footer-links {
+	a {
+		color: var(--color-secondary);
+		font-size: 0.82rem;
+		font-weight: 500;
+		text-decoration: none;
+		transition: color 140ms ease;
+
+		&:hover {
+			color: var(--color-brand);
+		}
+	}
+}
+
+@media (max-width: 900px) {
+	.footer-inner {
+		grid-template-columns: 1fr;
+	}
+
+	.footer-links {
+		justify-content: flex-start;
+	}
+}
+
+@media (max-width: 560px) {
+	.footer-inner {
+		width: calc(100% - 2rem);
+	}
+}
+</style>

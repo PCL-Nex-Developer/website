@@ -1,0 +1,25 @@
+# PCL Nex
+
+PCL Nex is a free, open-source Minecraft Java Edition launcher. Windows is fully supported, while macOS and Linux builds are in testing.
+
+It supports searching, installing, and updating mods, modpacks, resource packs, and shaders from both Modrinth and CurseForge.
+
+PCL Nex also provides instance management, Microsoft and offline/Yggdrasil accounts, Java management, skin customization, and PCL Nex tools.
+
+PCL Nex tools includes:
+- Gradient text generator
+- Minecraft Java Edition seed map
+- 3D schematic workshop
+- Recipe generator
+- AI Powered Minecraft mod translation tool
+
+PCL Nex is an independently developed community edition based on PCL.
+
+Official website:
+https://pcl-nex-developer.github.io/PCL2-Nex/
+
+Source code:
+https://github.com/PCL-Nex-Developer/PCL2-Nex
+
+Changelog:
+https://pcl-nex-developer.github.io/PCL2-Nex/changelog
