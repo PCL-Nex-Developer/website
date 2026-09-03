@@ -42,21 +42,6 @@ export const siteLocaleMessages: Record<string, Record<string, string>> = {
 		'pcl-nex-marketing.highlights.localized.title': '井然有序的内容管理',
 		'pcl-nex-marketing.highlights.localized.description':
 			'同时安装和管理整合包与单个项目。部分 CurseForge 文件受分发限制，可能需要手动下载。',
-		'pcl-nex-marketing.showcase.offline.title': '由你选择账户方式',
-		'pcl-nex-marketing.showcase.offline.description':
-			'使用 Microsoft 正版账户、本地离线身份，或 Yggdrasil 认证；支持 LittleSkin 预设和自定义服务器。',
-		'pcl-nex-marketing.showcase.offline.label': '账户',
-		'pcl-nex-marketing.showcase.themes.title': '每套设备，都有适合的色彩主题',
-		'pcl-nex-marketing.showcase.themes.description':
-			'在浅色、深色、OLED 和系统模式之间切换，并设置适合自己的强调色、背景和透明效果。',
-		'pcl-nex-marketing.showcase.themes.label': '个性化',
-		'pcl-nex-marketing.showcase.translation.title': '跨平台支持正在推进',
-		'pcl-nex-marketing.showcase.translation.description':
-			'Windows 是完整支持平台；macOS 与 Linux 版本处于内测阶段，持续完善输入、图像渲染、原生依赖和更新流程。',
-		'pcl-nex-marketing.showcase.translation.label': '跨平台',
-		'pcl-nex-marketing.showcase.offline.alt': 'PCL Nex 账户管理功能示意。',
-		'pcl-nex-marketing.showcase.themes.alt': 'PCL Nex 个性化主题示意。',
-		'pcl-nex-marketing.showcase.translation.alt': 'PCL Nex 跨平台构建资源。',
 		'pcl-nex-marketing.hero.download-button': '下载 PCL Nex',
 		'pcl-nex-marketing.download.fetching-links': '正在获取下载链接…',
 		'pcl-nex-marketing.download.links-failed': '暂时无法获取最新的下载链接。',
@@ -90,21 +75,20 @@ export const siteLocaleMessages: Record<string, Record<string, string>> = {
 		'app-marketing.hero.more-download-options': '更多下载选项',
 		'app-marketing.features.unlike-any-launcher': '与众不同的启动器',
 		'app-marketing.features.youve-used-before': '带来前所未有的体验',
-		'app-marketing.features.mod-management.installed-mods': '已安装模组',
-		'app-marketing.features.mod-management.search-mods': '搜索模组',
-		'app-marketing.features.mod-management.name': '名称',
-		'app-marketing.features.mod-management.version': '版本',
-		'app-marketing.features.mod-management.actions': '操作',
-		'app-marketing.features.mod-management.byAuthor': '作者：{author}',
-		'app-marketing.features.mod-management.title': '高效实例管理',
-		'app-marketing.features.mod-management.description':
-			'创建、导入和批量管理实例；集中管理模组、资源包、光影、文件、世界、截图和日志，以及更新、启动设置与整合包导出。',
+		'pcl-nex-marketing.features.cross-platform.title': '让 PCL 真正跨越平台',
+		'pcl-nex-marketing.features.cross-platform.description':
+			'突破原版 PCL 仅限 Windows 的限制，将熟悉的启动器体验带到 macOS 与 Linux。Windows 完整支持，macOS 与 Linux 持续测试。',
+		'pcl-nex-marketing.features.cross-platform.label': '跨平台',
+		'pcl-nex-marketing.features.cross-platform.alt':
+			'PCL Nex 在 Windows、macOS 与 Linux 上的支持状态。',
+		'pcl-nex-marketing.features.cross-platform.stable': '完整支持',
+		'pcl-nex-marketing.features.cross-platform.testing': '测试版本',
 		'app-marketing.features.performance.title': '高性能',
 		'app-marketing.features.performance.description':
 			'PCL Nex 以灵敏的界面与轻量的桌面核心保持安静、高效，不打扰你的游戏。',
-		'app-marketing.features.website.title': '从发现到安装',
-		'app-marketing.features.website.description':
-			'从 Modrinth 或 CurseForge 发现内容后，通过项目详情和版本选择直接安装到实例中，并在原处处理依赖和更新。',
+		'pcl-nex-marketing.features.plugin-market.title': '不受原版功能边界限制',
+		'pcl-nex-marketing.features.plugin-market.description':
+			'在持续扩展的插件市场中发现主题、联机、搜索、界面增强等社区插件，让 PCL Nex 的能力不再受原版启动器既有功能的限制。',
 		'app-marketing.features.importing.title': '导入配置',
 		'app-marketing.features.importing.description':
 			'从 PCL2, HMCL 或任意你喜欢的启动器一键导入现有配置，无需手动重建即可继续游玩。',

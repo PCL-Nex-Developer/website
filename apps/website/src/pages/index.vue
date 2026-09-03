@@ -8,12 +8,8 @@ import DownloadIcon from '@modrinth/assets/icons/download.svg?component'
 import GaugeIcon from '@modrinth/assets/icons/gauge.svg?component'
 import GitGraphIcon from '@modrinth/assets/icons/git-graph.svg?component'
 import IssuesIcon from '@modrinth/assets/icons/issues.svg?component'
-import SearchIcon from '@modrinth/assets/icons/search.svg?component'
-import TrashIcon from '@modrinth/assets/icons/trash.svg?component'
 import Accordion from '@modrinth/ui/src/components/base/Accordion.vue'
-import Avatar from '@modrinth/ui/src/components/base/Avatar.vue'
 import ButtonStyled from '@modrinth/ui/src/components/base/ButtonStyled.vue'
-import Checkbox from '@modrinth/ui/src/components/base/Checkbox.vue'
 import IntlFormatted from '@modrinth/ui/src/components/base/IntlFormatted.vue'
 import { defineMessages, useVIntl } from '@modrinth/ui/src/composables/i18n.ts'
 
@@ -23,7 +19,7 @@ import ImportGradientIcon from '~/components/landing/ImportGradientIcon.vue'
 import LinuxLogo from '~/components/landing/LinuxLogo.vue'
 import MultiplayerIcon from '~/components/landing/MultiplayerIcon.vue'
 import OfflineModeIcon from '~/components/landing/OfflineModeIcon.vue'
-import ProjectsShowcase from '~/components/landing/ProjectsShowcase.vue'
+import PluginShowcase from '~/components/landing/PluginShowcase.vue'
 import WindowsLogo from '~/components/landing/WindowsLogo.vue'
 import DownloadOptionsModal from '~/components/ui/DownloadOptionsModal.vue'
 
@@ -141,75 +137,6 @@ const os = computed<OSType>(() => {
 	}
 })
 
-const modManagementData = [
-	{
-		id: 'P7dR8mSH', // Todo: fetch name + author + icon from api
-		name: 'Fabric API',
-		author: 'modmuss50',
-		version: '0.86.1+1.20.1',
-		iconUrl: 'https://cdn.modrinth.com/data/P7dR8mSH/icon.png',
-	},
-	{
-		id: 'AANobbMI',
-		name: 'Sodium',
-		author: 'jellysquid3',
-		version: 'mc1.20.1-0.5.0',
-		iconUrl: 'https://cdn.modrinth.com/data/AANobbMI/icon.png',
-	},
-	{
-		id: 'YL57xq9U',
-		name: 'Iris Shaders',
-		author: 'coderbot',
-		version: '1.6.5+1.20.1',
-		iconUrl:
-			'https://cdn.modrinth.com/data/YL57xq9U/dc558eece920db435f9823ce86de0c4cde89800b.png',
-	},
-	{
-		id: 'gvQqBUqZ',
-		name: 'Lithium',
-		author: 'jellysquid3',
-		version: 'mc1.20.1-0.11.2',
-		iconUrl: 'https://cdn.modrinth.com/data/gvQqBUqZ/icon.png',
-	},
-	{
-		id: 'mOgUt4GM',
-		name: 'Mod Menu',
-		author: 'Prospector',
-		version: '7.2.1',
-		iconUrl:
-			'https://cdn.modrinth.com/data/mOgUt4GM/5a20ed1450a0e1e79a1fe04e61bb4e5878bf1d20.png',
-	},
-	{
-		id: '9s6osm5g',
-		name: 'Cloth Config API',
-		author: 'shedaniel',
-		version: '11.1.106+fabric',
-		iconUrl: 'https://cdn.modrinth.com/data/9s6osm5g/icon.png',
-	},
-	{
-		id: 'lhGA9TYQ',
-		name: 'Architectury API',
-		author: 'shedaniel',
-		version: '9.1.12+fabric',
-		iconUrl: 'https://cdn.modrinth.com/data/lhGA9TYQ/icon.png',
-	},
-	{
-		id: 'nrJ2NpD0',
-		name: 'Craftify',
-		author: 'ThatGravyBoat',
-		version: '8.5.2023',
-		iconUrl:
-			'https://cdn.modrinth.com/data/nrJ2NpD0/4f21214db060ed4542b1f3983c4113d293480a1b.webp',
-	},
-]
-
-// 演示表格的交互状态：checkbox 真实可切换，删除按钮移除对应行（刷新恢复）
-const checkedMods = ref(modManagementData.map(() => true))
-const removeMod = (index: number) => {
-	modManagementData.splice(index, 1)
-	checkedMods.value.splice(index, 1)
-}
-
 const downloadLauncher = computed(() => {
 	if (os.value === 'Windows') {
 		return () => {
@@ -300,57 +227,6 @@ const messages = defineMessages({
 		defaultMessage:
 			'Install and manage modpacks alongside individual projects. Some CurseForge files have distribution limits and may require a manual download.',
 	},
-	offlineAccounts: {
-		id: 'pcl-nex-marketing.showcase.offline.title',
-		defaultMessage: 'Accounts on your terms',
-	},
-	offlineAccountsDescription: {
-		id: 'pcl-nex-marketing.showcase.offline.description',
-		defaultMessage:
-			'Sign in with Microsoft, create a local offline identity, or use Yggdrasil authentication with LittleSkin presets and custom servers.',
-	},
-	offlineLabel: {
-		id: 'pcl-nex-marketing.showcase.offline.label',
-		defaultMessage: 'Accounts',
-	},
-	themes: {
-		id: 'pcl-nex-marketing.showcase.themes.title',
-		defaultMessage: 'A color theme for every setup',
-	},
-	themesDescription: {
-		id: 'pcl-nex-marketing.showcase.themes.description',
-		defaultMessage:
-			'Switch between light, dark, OLED, and system modes, then set your accent color, background, and transparency to match your setup.',
-	},
-	personalizeLabel: {
-		id: 'pcl-nex-marketing.showcase.themes.label',
-		defaultMessage: 'Personalize',
-	},
-	translation: {
-		id: 'pcl-nex-marketing.showcase.translation.title',
-		defaultMessage: 'Cross-platform support in progress',
-	},
-	translationDescription: {
-		id: 'pcl-nex-marketing.showcase.translation.description',
-		defaultMessage:
-			'Windows is fully supported. macOS and Linux builds are in testing while input, rendering, native dependencies, and updates continue to improve.',
-	},
-	translateLabel: {
-		id: 'pcl-nex-marketing.showcase.translation.label',
-		defaultMessage: 'Cross-platform',
-	},
-	offlineScreenshotAlt: {
-		id: 'pcl-nex-marketing.showcase.offline.alt',
-		defaultMessage: 'PCL Nex account management feature.',
-	},
-	themesScreenshotAlt: {
-		id: 'pcl-nex-marketing.showcase.themes.alt',
-		defaultMessage: 'PCL Nex theme customization feature.',
-	},
-	translationScreenshotAlt: {
-		id: 'pcl-nex-marketing.showcase.translation.alt',
-		defaultMessage: 'PCL Nex cross-platform build resources.',
-	},
 	downloadPclNexButton: {
 		id: 'pcl-nex-marketing.hero.download-button',
 		defaultMessage: 'Download PCL Nex',
@@ -419,38 +295,30 @@ const messages = defineMessages({
 		id: 'app-marketing.hero.more-download-options',
 		defaultMessage: 'More Download Options',
 	},
-	installedMods: {
-		id: 'app-marketing.features.mod-management.installed-mods',
-		defaultMessage: 'Installed mods',
+	crossPlatformFeature: {
+		id: 'pcl-nex-marketing.features.cross-platform.title',
+		defaultMessage: 'PCL, now beyond Windows',
 	},
-	searchMods: {
-		id: 'app-marketing.features.mod-management.search-mods',
-		defaultMessage: 'Search mods',
-	},
-	name: {
-		id: 'app-marketing.features.mod-management.name',
-		defaultMessage: 'Name',
-	},
-	version: {
-		id: 'app-marketing.features.mod-management.version',
-		defaultMessage: 'Version',
-	},
-	actions: {
-		id: 'app-marketing.features.mod-management.actions',
-		defaultMessage: 'Actions',
-	},
-	byAuthor: {
-		id: 'app-marketing.features.mod-management.byAuthor',
-		defaultMessage: 'by {author}',
-	},
-	modManagement: {
-		id: 'app-marketing.features.mod-management.title',
-		defaultMessage: 'Efficient instance management',
-	},
-	modManagementDescription: {
-		id: 'app-marketing.features.mod-management.description',
+	crossPlatformFeatureDescription: {
+		id: 'pcl-nex-marketing.features.cross-platform.description',
 		defaultMessage:
-			'Create, import, and manage instances in bulk. Keep mods, resource packs, shaders, files, worlds, screenshots, and logs together with updates, launch settings, and modpack export.',
+			'PCL Nex takes the familiar PCL experience beyond Windows to macOS and Linux. Windows is fully supported, with macOS and Linux builds in active testing.',
+	},
+	crossPlatformLabel: {
+		id: 'pcl-nex-marketing.features.cross-platform.label',
+		defaultMessage: 'Cross-platform',
+	},
+	crossPlatformVisualAlt: {
+		id: 'pcl-nex-marketing.features.cross-platform.alt',
+		defaultMessage: 'PCL Nex availability on Windows, macOS, and Linux.',
+	},
+	platformStable: {
+		id: 'pcl-nex-marketing.features.cross-platform.stable',
+		defaultMessage: 'Fully supported',
+	},
+	platformTesting: {
+		id: 'pcl-nex-marketing.features.cross-platform.testing',
+		defaultMessage: 'Testing build',
 	},
 	performant: {
 		id: 'app-marketing.features.performance.title',
@@ -927,120 +795,40 @@ useHead(() => ({
 					<h3>{{ formatMessage(messages.performant) }}</h3>
 					<p>{{ formatMessage(messages.performantDescription) }}</p>
 				</article>
-				<article
-					class="feature gradient-border showcase-card showcase-card-wide col-span-3 flex min-w-0 flex-col overflow-hidden p-0"
-				>
-					<div class="showcase-copy px-7 pb-6 pt-7">
-						<span>{{ formatMessage(messages.offlineLabel) }}</span>
-						<h3>{{ formatMessage(messages.offlineAccounts) }}</h3>
-						<p>{{ formatMessage(messages.offlineAccountsDescription) }}</p>
-					</div>
-					<div
-						class="feature-art"
-						role="img"
-						:aria-label="formatMessage(messages.offlineScreenshotAlt)"
-					>
-						<img class="skin-art" src="/product/steve.png" alt="" />
-						<img class="block-art" src="/product/grass.png" alt="" />
-					</div>
+				<article class="feature gradient-border plugin-market-feature">
+					<PluginShowcase />
 				</article>
 
 				<article
-					class="feature gradient-border showcase-card col-span-3 flex min-w-0 flex-col overflow-hidden p-0"
+					class="feature gradient-border showcase-card showcase-card-wide cross-platform-feature flex min-w-0 flex-col overflow-hidden p-0"
 				>
 					<div class="showcase-copy px-7 pb-6 pt-7">
-						<span>{{ formatMessage(messages.personalizeLabel) }}</span>
-						<h3>{{ formatMessage(messages.themes) }}</h3>
-						<p>{{ formatMessage(messages.themesDescription) }}</p>
+						<span>{{ formatMessage(messages.crossPlatformLabel) }}</span>
+						<h3>{{ formatMessage(messages.crossPlatformFeature) }}</h3>
+						<p>{{ formatMessage(messages.crossPlatformFeatureDescription) }}</p>
 					</div>
 					<div
-						class="feature-art"
+						class="compact-platform-art"
 						role="img"
-						:aria-label="formatMessage(messages.themesScreenshotAlt)"
+						:aria-label="formatMessage(messages.crossPlatformVisualAlt)"
 					>
-						<img class="logo-art" src="/pcl-nex.png" alt="" />
-						<span class="theme-swatches" aria-hidden="true"
-							><i /><i /><i /><i
-						/></span>
-					</div>
-				</article>
-
-				<article
-					class="feature gradient-border showcase-card col-span-3 flex min-w-0 flex-col overflow-hidden p-0"
-				>
-					<div class="showcase-copy px-7 pb-6 pt-7">
-						<span>{{ formatMessage(messages.translateLabel) }}</span>
-						<h3>{{ formatMessage(messages.translation) }}</h3>
-						<p>{{ formatMessage(messages.translationDescription) }}</p>
-					</div>
-					<div
-						class="feature-art"
-						role="img"
-						:aria-label="formatMessage(messages.translationScreenshotAlt)"
-					>
-						<img
-							class="platform-art platform-art-left"
-							src="/product/command-block.png"
-							alt=""
-						/>
-						<img class="platform-art" src="/product/redstone.png" alt="" />
-					</div>
-				</article>
-
-				<div class="feature gradient-border mods">
-					<div class="search-bar">
-						<h4>{{ formatMessage(messages.installedMods) }}</h4>
-						<div class="mini-input">
-							<SearchIcon aria-hidden="true" />
-							<div class="search">{{ formatMessage(messages.searchMods) }}</div>
+						<div class="compact-platform-item is-stable">
+							<WindowsIcon aria-hidden="true" />
+							<strong>Windows</strong>
+							<span>{{ formatMessage(messages.platformStable) }}</span>
+						</div>
+						<div class="compact-platform-item">
+							<AppleIcon aria-hidden="true" />
+							<strong>macOS</strong>
+							<span>{{ formatMessage(messages.platformTesting) }}</span>
+						</div>
+						<div class="compact-platform-item">
+							<LinuxIcon aria-hidden="true" />
+							<strong>Linux</strong>
+							<span>{{ formatMessage(messages.platformTesting) }}</span>
 						</div>
 					</div>
-					<div class="row select-none hover:cursor-default">
-						<div />
-						<div class="cell">{{ formatMessage(messages.name) }}</div>
-						<div class="cell">{{ formatMessage(messages.version) }}</div>
-						<div class="cell">{{ formatMessage(messages.actions) }}</div>
-					</div>
-					<TransitionGroup name="mod-row" tag="div" class="table">
-						<div
-							v-for="(mod, index) in modManagementData"
-							:key="mod.id"
-							:class="['row', { first: index === 0 }]"
-						>
-							<div class="cell">
-								<Avatar size="sm" :src="mod.iconUrl" />
-							</div>
-							<div class="cell">
-								<div class="name">{{ mod.name }}</div>
-								<div class="description">
-									{{ formatMessage(messages.byAuthor, { author: mod.author }) }}
-								</div>
-							</div>
-							<div class="cell">{{ mod.version }}</div>
-							<div class="cell check">
-								<Checkbox
-									v-model="checkedMods[index]"
-									:aria-label="`${mod.name} ${formatMessage(messages.installedMods)}`"
-								/>
-								<ButtonStyled circular type="transparent">
-									<button
-										:aria-label="`${formatMessage(messages.actions)}: ${mod.name}`"
-										@click="removeMod(index)"
-									>
-										<TrashIcon />
-									</button>
-								</ButtonStyled>
-							</div>
-						</div>
-					</TransitionGroup>
-					<h3>{{ formatMessage(messages.modManagement) }}</h3>
-					<p>
-						{{ formatMessage(messages.modManagementDescription) }}
-					</p>
-				</div>
-				<div class="feature gradient-border website">
-					<ProjectsShowcase />
-				</div>
+				</article>
 			</div>
 			<div class="feature-row">
 				<div class="point">
@@ -1673,75 +1461,6 @@ useHead(() => ({
 	align-items: center;
 }
 
-.feature-art {
-	position: relative;
-	display: flex;
-	min-height: 14rem;
-	align-items: center;
-	justify-content: center;
-	overflow: hidden;
-	border-top: 1px solid var(--landing-border-color);
-	background: var(--surface-2);
-}
-
-.skin-art {
-	width: 5.75rem;
-	height: auto;
-	image-rendering: pixelated;
-	filter: drop-shadow(0 1rem 1.25rem rgb(0 0 0 / 25%));
-}
-
-.block-art {
-	width: 5rem;
-	height: 5rem;
-	margin: 4rem 0 0 -1rem;
-	image-rendering: pixelated;
-}
-
-.logo-art {
-	width: 8.5rem;
-	height: 8.5rem;
-	object-fit: contain;
-}
-
-.theme-swatches {
-	display: grid;
-	grid-template-columns: repeat(2, 1.5rem);
-	gap: 0.45rem;
-	margin-left: 1.5rem;
-
-	i {
-		width: 1.5rem;
-		height: 1.5rem;
-		border: 1px solid rgb(255 255 255 / 28%);
-		border-radius: 0.25rem;
-		background: #80d0e0;
-	}
-
-	i:nth-child(2) {
-		background: #306060;
-	}
-
-	i:nth-child(3) {
-		background: #58a8c0;
-	}
-
-	i:nth-child(4) {
-		background: #f4f7f8;
-	}
-}
-
-.platform-art {
-	width: 6rem;
-	height: 6rem;
-	image-rendering: pixelated;
-	filter: drop-shadow(0 1rem 1.25rem rgb(0 0 0 / 25%));
-}
-
-.platform-art-left {
-	margin: 2.5rem -0.75rem 0 0;
-}
-
 .showcase-copy {
 	span {
 		color: var(--color-brand);
@@ -1775,127 +1494,72 @@ useHead(() => ({
 	color: rgb(0 0 0 / 5%);
 }
 
-:global(html.light-mode) .mods .row:not(.header):hover {
-	background: rgb(0 0 0 / 4%);
+.cross-platform-feature {
+	min-height: 13.5rem;
 }
 
-.mods,
-.website {
-	h3,
-	p {
-		margin: 0;
-	}
-
-	h3 {
-		font-weight: 500;
-		font-size: var(--font-size-xl);
-		color: var(--landing-color-heading);
-		margin-bottom: 0.375rem;
-	}
-
-	p {
-		font-size: var(--font-size-md);
-		color: var(--landing-color-subheading);
-	}
+.compact-platform-art {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	align-items: center;
+	gap: 0.75rem;
+	min-height: 13.5rem;
+	padding: 1.5rem;
+	border-left: 1px solid var(--landing-border-color);
+	background: var(--surface-2);
 }
 
-.mods {
-	.table {
-		margin-bottom: 1rem;
-		overflow: hidden;
-		max-height: 32rem;
+.compact-platform-item {
+	display: flex;
+	min-width: 0;
+	min-height: 8.5rem;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0.45rem;
+	padding: 0.85rem 0.5rem;
+	border: 1px solid var(--landing-border-color);
+	border-radius: 0.45rem;
+	background: rgb(255 255 255 / 3%);
+	text-align: center;
+
+	svg {
+		width: 1.65rem;
+		height: 1.65rem;
+		margin-bottom: 0.2rem;
+		color: var(--color-secondary);
 	}
 
-	h3,
-	p {
-		text-align: center;
-	}
-
-	h4 {
-		margin: 0;
+	strong {
 		color: var(--color-contrast);
+		font-size: 0.82rem;
 	}
 
-	.search-bar {
-		width: 100%;
-		padding: var(--gap-sm);
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-		border-radius: var(--radius-md);
-		border: 1px solid var(--landing-border-color);
-		background:
-			linear-gradient(0deg, #3b3f55 0%, #3b3f55 100%), rgba(59, 63, 85, 0.15);
-		margin-bottom: 0.5rem;
+	span {
+		color: var(--color-secondary);
+		font-size: 0.68rem;
 		white-space: nowrap;
-		font-size: var(--font-size-sm);
-
-		.mini-input {
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-			gap: 0.5rem;
-			padding: var(--gap-sm) var(--gap-md);
-			border-radius: var(--radius-sm);
-			background-color: #1e202f;
-			flex-grow: 1;
-			max-width: 12rem;
-		}
-
-		h4 {
-			font-weight: normal;
-			margin-left: 0.5rem;
-		}
 	}
 
-	.row {
-		display: grid;
-		grid-template-columns: 3rem 2fr 1fr 3.75rem;
-		padding: 0 var(--gap-sm);
-		gap: 1rem;
+	&.is-stable {
+		border-color: color-mix(in srgb, var(--color-brand) 50%, transparent);
+		background: color-mix(in srgb, var(--color-brand) 9%, transparent);
 
-		&:not(.header):hover {
-			background: rgb(255 255 255 / 5%);
-		}
-
-		.cell {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			padding: var(--gap-sm) 0;
-			font-size: var(--font-size-sm);
-
-			.name {
-				color: var(--color-contrast);
-			}
-
-			.description {
-				font-size: var(--font-size-xs);
-			}
-
-			&.last {
-				align-items: flex-end;
-			}
-
-			&.check {
-				align-items: center;
-				flex-direction: row;
-			}
-		}
-	}
-
-	.header {
-		.cell {
-			color: var(--color-base);
+		svg,
+		span {
+			color: var(--color-brand);
 		}
 	}
 }
 
-.website {
+:global(html.light-mode) .compact-platform-item {
+	background: rgb(0 0 0 / 3%);
+}
+
+.plugin-market-feature {
+	grid-column: 1 / -1;
 	text-align: center;
 	padding: 0 !important;
-
 	position: relative;
 }
 
@@ -2316,8 +1980,8 @@ useHead(() => ({
 }
 
 @media screen and (max-width: 1024px) {
-	.mods,
-	.website {
+	.cross-platform-feature,
+	.plugin-market-feature {
 		grid-column: 1 / -1 !important;
 	}
 
@@ -2358,8 +2022,8 @@ useHead(() => ({
 
 	.promise-card,
 	.showcase-card,
-	.mods,
-	.website {
+	.cross-platform-feature,
+	.plugin-market-feature {
 		grid-column: auto;
 	}
 
@@ -2375,6 +2039,17 @@ useHead(() => ({
 	.showcase-card-wide {
 		grid-column: auto;
 		grid-template-columns: 1fr;
+	}
+
+	.compact-platform-art {
+		min-height: auto;
+		padding: 1rem;
+		border-top: 1px solid var(--landing-border-color);
+		border-left: 0;
+	}
+
+	.compact-platform-item {
+		min-height: 7.5rem;
 	}
 
 	.showcase-copy {
